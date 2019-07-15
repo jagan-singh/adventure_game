@@ -2,8 +2,7 @@ import time
 import random
 
 # List of all the enemies in the game to randomize.
-enemies = ["Dragon", "Troll", "Pirate", "Vampire", "Gorgon"]
-enemy = random.choice(enemies)
+enemies = ["Dragon", "Troll", "Pirate", "Vampire", "Gorgon", "Ghost"]
 
 # boolean to check if the game is being played for the first time
 firstTime = True
@@ -15,7 +14,7 @@ restart = False
 sword = False
 
 
-def house(name, weapon):
+def house(name, weap):
     print("You approach the door of the house.")
     time.sleep(1.5)
     print("You are about to knock when the door opens and out steps a " + name + ".")
@@ -30,20 +29,22 @@ def house(name, weapon):
     res = input("Please enter 1 or 2\n")
     while True:
         if res == "1":
-            if weapon:
-                print("As the " + name + "moves to attack, you unsheath your new sword.")
+            if weap:
+                print("As the " + name + " moves to attack, you unsheath your new sword.")
                 time.sleep(1.5)
                 print("The Sword of Ogoroth shines brightly in your hand as you brace yourself for the attack.")
                 time.sleep(1.5)
                 print("But the " + name + " takes one look at your shiny new toy and runs away!")
                 time.sleep(1.5)
                 print("You have rid the town of the " + name + ". You are victorious!")
+                time.sleep(1.5)
             else:
                 print("You do your best...")
                 time.sleep(1.5)
                 print("but your dagger is no match for the wicked fairie.")
                 time.sleep(1.5)
                 print("You have been defeated!")
+                time.sleep(1.5)
             break
         elif res == "2":
             field()
@@ -52,10 +53,10 @@ def house(name, weapon):
             res = input("Please enter 1 or 2\n")
 
 
-def cave(weapon):
+def cave(weapo):
     print("You peer cautiously into the cave.")
     time.sleep(1.5)
-    if not weapon:
+    if not weapo:
         print("It turns out to be only a very small cave.")
         time.sleep(1.5)
         print("Your eye catches a glint of metal behind a rock.")
@@ -63,7 +64,7 @@ def cave(weapon):
         print("You have found the magical Sword of Ogoroth!")
         time.sleep(1.5)
         print("You discard your silly old dagger and take the sword with you.")
-        weapon = True
+        weapo = True
         time.sleep(1.5)
         print("You walk back out to the field.")
         time.sleep(1.5)
@@ -86,10 +87,10 @@ def cave(weapon):
     n = input("Please enter 1 or 2\n")
     while True:
         if n == "1":
-            house(enemy, sword)
+            house(enemy, weapo)
             break
         elif n == "2":
-            cave(sword)
+            cave(weapo)
             break
         else:
             n = input("Please enter 1 or 2\n")
@@ -117,6 +118,7 @@ def field():
 
 
 while firstTime or restart:
+    enemy = random.choice(enemies)
     sword = False
     firstTime = False
     restart = False
@@ -157,9 +159,11 @@ while firstTime or restart:
         if response == "y":
             restart = True
             print("Excellent! Restarting the game")
+            time.sleep(2)
             break
         elif response == "n":
             print("Thanks for playing! See you next time.")
+            time.sleep(2)
             break
         else:
             response = input("Would you like to play again? (y/n)\n")
