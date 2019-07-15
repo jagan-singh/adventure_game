@@ -144,7 +144,7 @@ while firstTime or restart:
 # while loop is used to get specific input from the user (1 or 2 only)
     while True:
         if num == "1":
-            house(enemy,sword)
+            house(enemy, sword)
             break
         elif num == "2":
             cave(sword)
